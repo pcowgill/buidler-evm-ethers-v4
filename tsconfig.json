@@ -1,7 +1,6 @@
 {
   "include": ["src", "types"],
   "files": [
-    "./buidler.config.ts",
     "./node_modules/@nomiclabs/buidler-ethers/src/type-extensions.d.ts"
   ],
   "compilerOptions": {
