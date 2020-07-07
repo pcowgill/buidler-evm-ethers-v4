@@ -1,0 +1,49 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "npx tsdx watch",
+    "build": "npx tsdx build",
+    "test:tsdx": "npx tsdx test",
+    "test": "npm run buidler-evm:start && npm run test:tsdx",
+    "lint": "npx tsdx lint",
+    "prepare": "npx tsdx build",
+    "buidler-evm:start": "npx buidler node > buidler-evm.log &",
+    "buidler-evm:stop": "kill `ps ax|grep 'buidler node'|grep -v grep| awk '{print $1}'` 2> /dev/null; exit 0"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "mylib",
+  "author": "Paul Cowgill",
+  "module": "dist/mylib.esm.js",
+  "devDependencies": {
+    "@nomiclabs/buidler": "^1.3.8",
+    "@types/node": "^14.0.18",
+    "ethers": "^4.0.47",
+    "husky": "^4.2.5",
+    "ts-node": "^8.10.2",
+    "tsdx": "^0.13.2",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.6"
+  },
+  "dependencies": {}
+}
