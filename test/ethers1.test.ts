@@ -42,18 +42,19 @@ describe("ethers", () => {
   });
 
 
-  for (var i = 0; i < 20; i++) {
-    it("should get balance of wallet", async () => {
-      let randomWallet = ethers.Wallet.createRandom();
-      
-      const walletBalance = await wallet.getBalance();
-      console.log({ walletBalance })
-      randomWallet = randomWallet.connect(provider);
-      const randomWalletBalance = await randomWallet.getBalance();
-      console.log({ randomWalletBalance })
-    })
-  }
+  // Note: Not triggering these in a loop to
+  // ensure Jest runs them in parallel
 
+  test.each([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])("should get balance of wallet", async () => {
+    let randomWallet = ethers.Wallet.createRandom();
+    
+    const walletBalance = await wallet.getBalance();
+    console.log({ walletBalance })
+    randomWallet = randomWallet.connect(provider);
+    const randomWalletBalance = await randomWallet.getBalance();
+    console.log({ randomWalletBalance })
+    expect(randomWallet.address).toHaveLength(42);
+  })
 
 
 })

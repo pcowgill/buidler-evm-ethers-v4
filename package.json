@@ -15,6 +15,7 @@
     "build": "npx tsdx build",
     "test:tsdx": "npx tsdx test",
     "test": "npm run buidler-evm:stop && npm run buidler-evm:start && npm run test:tsdx",
+    "test:without-stopping": "npm run buidler-evm:start && npm run test:tsdx",
     "lint": "npx tsdx lint",
     "prepare": "npx tsdx build",
     "buidler-evm:start": "npx buidler node > buidler-evm.log &",
